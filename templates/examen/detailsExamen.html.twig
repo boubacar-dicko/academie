@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Examen{% endblock %}
+
+{% block body %}
+    <h1>Examen</h1>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ examan.id }}</td>
+        </tr>
+        <tr>
+            <th>NomExamen</th>
+            <td>{{ examan.nomExamen }}</td>
+        </tr>
+        <tr>
+            <th>Date</th>
+            <td>{{ examan.date }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div > <a href="{{ path('liste_examen') }}" class="col-md-1  btn btn-success">Liste</a> </div>
+    <div > <a href="{{ path('inscription_new')}}" class="col-md-2 btn btn-secondary">Postuler a un Examen</a></div>
+
+{% endblock %}

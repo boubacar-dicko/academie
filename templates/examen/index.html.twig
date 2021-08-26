@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Examen index{% endblock %}
+
+{% block body %}
+    <h1>Liste des Examens</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NomExamen</th>
+                <th>Date</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for examan in examens %}
+            <tr>
+                <td>{{ examan.id }}</td>
+                <td>{{ examan.nomExamen }}</td>
+                <td>{{ examan.date }}</td>
+                <td>
+                    {% if is_granted('ROLE_ELEVE') %}
+                    <a href="{{ path('examen_show', {'id': examan.id}) }}">show</a>
+                    {% endif %}
+                    <a href="{{ path('examen_edit', {'id': examan.id}) }}">edit</a>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('examen_new') }}">Create new</a>
+{% endblock %}
