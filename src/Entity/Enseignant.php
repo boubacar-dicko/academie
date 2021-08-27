@@ -52,6 +52,7 @@ class Enseignant
      */
     private $convocation;
 
+
     public function getId(): ?int
     {
         return $this->id;

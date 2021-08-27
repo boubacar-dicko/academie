@@ -19,7 +19,7 @@
             <tr>
 
                 <td>{{ examan.nomExamen }}</td>
-                <td>{{ examan.date }}</td>
+                <td>{{ examan.date ? examan.date|date('Y-m-d') : '' }}</td>
                 <td>
                     {% if is_granted('ROLE_ELEVE') %}
                         <a href="{{ path('details_Examen', {'id': examan.id}) }}">show</a>

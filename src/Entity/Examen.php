@@ -24,10 +24,6 @@ class Examen
      */
     private $nomExamen;
 
-    /**
-     * @ORM\Column(type="string", length=20)
-     */
-    private $date;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="examens")
@@ -38,6 +34,11 @@ class Examen
      * @ORM\OneToMany(targetEntity=Epreuve::class, mappedBy="examen")
      */
     private $epreuves;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $date;
 
     public function __toString()
     {
@@ -66,17 +67,7 @@ class Examen
         return $this;
     }
 
-    public function getDate(): ?string
-    {
-        return $this->date;
-    }
 
-    public function setDate(string $date): self
-    {
-        $this->date = $date;
-
-        return $this;
-    }
 
     public function getUser(): ?User
     {
@@ -116,6 +107,18 @@ class Examen
                 $epreufe->setExamen(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(\DateTimeInterface $date): self
+    {
+        $this->date = $date;
 
         return $this;
     }

@@ -21,6 +21,14 @@ class EnseignantController extends AbstractController
         ]);
     }
 
+    #[Route('/listeEnseignant', name: 'liste_enseignant', methods: ['GET'])]
+    public function listeEnseignant(EnseignantRepository $enseignantRepository): Response
+    {
+        return $this->render('enseignant/listeEnseignant.html.twig', [
+            'enseignants' => $enseignantRepository->findAll(),
+        ]);
+    }
+
     #[Route('/new', name: 'enseignant_new', methods: ['GET', 'POST'])]
     public function new(Request $request): Response
     {
@@ -46,6 +54,14 @@ class EnseignantController extends AbstractController
     public function show(Enseignant $enseignant): Response
     {
         return $this->render('enseignant/show.html.twig', [
+            'enseignant' => $enseignant,
+        ]);
+    }
+
+    #[Route('/detailsEnseignant/{id}', name: 'details_enseignant', methods: ['GET'])]
+    public function detailsEnseignant(Enseignant $enseignant): Response
+    {
+        return $this->render('enseignant/detailsEnseignant.html.twig', [
             'enseignant' => $enseignant,
         ]);
     }

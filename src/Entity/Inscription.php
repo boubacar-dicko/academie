@@ -6,6 +6,7 @@ use App\Repository\InscriptionRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\Date;
 
 /**
  * @ORM\Entity(repositoryClass=InscriptionRepository::class)
@@ -24,10 +25,7 @@ class Inscription
      */
     private $nom;
 
-    /**
-     * @ORM\Column(type="string", length=100)
-     */
-    private $dateNaiss;
+
 
     /**
      * @ORM\Column(type="string", length=100)
@@ -43,6 +41,11 @@ class Inscription
      * @ORM\OneToMany(targetEntity=User::class, mappedBy="inscription")
      */
     private $user;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $dateNaiss;
 
     public function __construct()
     {
@@ -66,17 +69,6 @@ class Inscription
         return $this;
     }
 
-    public function getDateNaiss(): ?string
-    {
-        return $this->dateNaiss;
-    }
-
-    public function setDateNaiss(string $dateNaiss): self
-    {
-        $this->dateNaiss = $dateNaiss;
-
-        return $this;
-    }
 
     public function getNomEtablissement(): ?string
     {
@@ -128,6 +120,18 @@ class Inscription
                 $user->setInscription(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDateNaiss(): ?\DateTimeInterface
+    {
+        return $this->dateNaiss;
+    }
+
+    public function setDateNaiss(\DateTimeInterface $dateNaiss): self
+    {
+        $this->dateNaiss = $dateNaiss;
 
         return $this;
     }

@@ -16,10 +16,6 @@
                 <td>{{ inscription.nom }}</td>
             </tr>
             <tr>
-                <th>DateNaiss</th>
-                <td>{{ inscription.dateNaiss }}</td>
-            </tr>
-            <tr>
                 <th>NomEtablissement</th>
                 <td>{{ inscription.nomEtablissement }}</td>
             </tr>
@@ -27,12 +23,16 @@
                 <th>NomExamen</th>
                 <td>{{ inscription.nomExamen }}</td>
             </tr>
+            <tr>
+                <th>DateNaiss</th>
+                <td>{{ inscription.dateNaiss ? inscription.dateNaiss|date('Y-m-d') : '' }}</td>
+            </tr>
         </tbody>
     </table>
 
     <a href="{{ path('inscription_index') }}">back to list</a>
 
-    <!--a href="{{ path('inscription_edit', {'id': inscription.id}) }}">edit</a-->
+    <a href="{{ path('inscription_edit', {'id': inscription.id}) }}">edit</a>
 
     {{ include('inscription/_delete_form.html.twig') }}
 {% endblock %}

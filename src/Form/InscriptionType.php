@@ -16,14 +16,11 @@ class InscriptionType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('dateNaiss')
             ->add('nomEtablissement', EntityType::class, [
                 // looks for choices from this entity
                 'class' => Etablissement::class,
                 'choice_label' => 'nomEtablissement',
-
-
-            ])
+                 ])
             ->add('nomExamen', EntityType::class, [
                 // looks for choices from this entity
                 'class' => Examen::class,
@@ -33,8 +30,9 @@ class InscriptionType extends AbstractType
                 // used to render a select box, check boxes or radios
                 // 'multiple' => true,
                 // 'expanded' => true,
-            ]);
-
+            ])
+            ->add('dateNaiss')
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)

@@ -43,7 +43,17 @@
                         </a>
                     </li>
                 {% endif %}
+                {% if is_granted('ROLE_ENSEIGNANT') %}
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ path('inscription_new') }}">
+                            <p>S'INSCRIRE</p>
+                        </a>
+                        <a class="nav-link" href="{{ path('liste_examen') }}">
+                            <p>liste des Examens</p>
+                        </a>
+                    </li>
 
+                {% endif %}
                 {% if is_granted('ROLE_ACADEMIE') %}
                     <li>
                         <a class="nav-link" href="{{ path('etablissement_index') }}">
@@ -131,7 +141,9 @@
                                 <a class="dropdown-item" href="#">Something else here</a>
                                 <div class="divider"></div>
                                 <a class="dropdown-item" href="#">Separated link</a-->
-                                {{ app.user.prenom }} {{ app.user.nom }}
+                                {% if is_granted('ROLE_ACADEMIE') %}
+                                        {{ app.user.prenom }} {{ app.user.nom }}
+                                {% endif %}
                             </div>
                         </li>
                         <li class="nav-item">

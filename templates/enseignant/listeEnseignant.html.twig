@@ -7,15 +7,15 @@
 
     <table class="table">
         <thead>
-            <tr>
+        <tr>
 
-                <th>Matricule</th>
-                <th>Nom</th>
-                <th>Telephone</th>
-                <th>Adresse</th>
-                <th>Ville</th>
-                <th>actions</th>
-            </tr>
+            <th>Matricule</th>
+            <th>Nom</th>
+            <th>Telephone</th>
+            <th>Adresse</th>
+            <th>Ville</th>
+            <th>actions</th>
+        </tr>
         </thead>
         <tbody>
         {% for enseignant in enseignants %}
@@ -27,8 +27,8 @@
                 <td>{{ enseignant.adresse }}</td>
                 <td>{{ enseignant.ville }}</td>
                 <td>
-                    <a href="{{ path('enseignant_show', {'id': enseignant.id}) }}">show</a>
-                    <a href="{{ path('enseignant_edit', {'id': enseignant.id}) }}">edit</a>
+                    <a href="{{ path('details_enseignant', {'id': enseignant.id}) }}">show</a>
+                    <!--a href="{{ path('enseignant_edit', {'id': enseignant.id}) }}">edit</a-->
                 </td>
             </tr>
         {% else %}
@@ -38,6 +38,4 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('enseignant_new') }}">Create new</a>
 {% endblock %}

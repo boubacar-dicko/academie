@@ -3,7 +3,7 @@
 {% block title %}Examen index{% endblock %}
 
 {% block body %}
-    <h1>Liste des Examens</h1>
+    <h1>Examen index</h1>
 
     <table class="table">
         <thead>
@@ -19,13 +19,10 @@
             <tr>
                 <td>{{ examan.id }}</td>
                 <td>{{ examan.nomExamen }}</td>
-                <td>{{ examan.date }}</td>
+                <td>{{ examan.date ? examan.date|date('Y-m-d') : '' }}</td>
                 <td>
-                    {% if is_granted('ROLE_ELEVE') %}
                     <a href="{{ path('examen_show', {'id': examan.id}) }}">show</a>
-                    {% endif %}
                     <a href="{{ path('examen_edit', {'id': examan.id}) }}">edit</a>
-
                 </td>
             </tr>
         {% else %}
@@ -35,5 +32,6 @@
         {% endfor %}
         </tbody>
     </table>
+
     <a href="{{ path('examen_new') }}">Create new</a>
 {% endblock %}

@@ -17,12 +17,11 @@
         </tr>
         <tr>
             <th>Date</th>
-            <td>{{ examan.date }}</td>
+            <td>{{ examan.date ? examan.date|date('Y-m-d') : '' }}</td>
         </tr>
         </tbody>
     </table>
 
     <div > <a href="{{ path('liste_examen') }}" class="col-md-1  btn btn-success">Liste</a> </div>
     <div > <a href="{{ path('inscription_new')}}" class="col-md-2 btn btn-secondary">Postuler a un Examen</a></div>
-
 {% endblock %}

@@ -33,7 +33,7 @@ class InscriptionController extends AbstractController
             $entityManager->persist($inscription);
             $entityManager->flush();
 
-            return $this->redirectToRoute('inscription_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('liste_examen', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('inscription/new.html.twig', [
